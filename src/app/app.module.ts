@@ -7,13 +7,15 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MoviesListComponent } from './movies-list/movies-list.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
+import { FavBtnComponent } from './fav-btn/fav-btn.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     MoviesListComponent,
-    MovieCardComponent
+    MovieCardComponent,
+    FavBtnComponent
   ],
   imports: [
     BrowserModule,

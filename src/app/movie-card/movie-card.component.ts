@@ -7,13 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MovieCardComponent implements OnInit {
   @Input() movie:any;
-  constructor() {
-    
-    
-  }
-
+  constructor() {}
   ngOnInit(): void {   
-    this.movie = {...this.movie,vote_average:this.movie.vote_average/2} 
+    this.movie = {...this.movie,selected:false} 
+  }
+  addToFav(selsectedMovie:object):void{
+    console.log(selsectedMovie);
+    
   }
 
 }

@@ -1,10 +1,14 @@
-<div class="card h-100">
-  <img [src]="movie.poster_path" class="card-img-top" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title">{{ movie.title | uppercase }}</h5>
-    <p class="card-text">{{ movie.overview }}</p>
-    <p>{{movie.release_date | date : 'MMMM YYYY'}}</p>
-    <ngb-rating [(rate)]="movie.vote_average" [readonly]="true" [max]="5"></ngb-rating>
-    <!-- <button class="btn btn-primary" (click)="sendDataToParent()">Selet</button> -->
+
+
+<div class="col">
+  <div class="card h-100">
+    <img [src]="movie.poster_path"  class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ movie.title | uppercase }}</h5>
+      <p class="card-text">{{movie.overview.length>100?(movie.overview | slice:0:100)+'...':movie.overview}}</p>
+      <p class="release-date mb-0">{{movie.release_date | date : 'MMMM, YYYY'}}</p>
+      <span class="stars alignright"><span [style.width.%]="movie.vote_average*10"></span></span>
+      <app-fav-btn [selected]="movie.selected"></app-fav-btn>
+    </div>
   </div>
 </div>

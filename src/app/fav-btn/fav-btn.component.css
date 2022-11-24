@@ -1,0 +1,10 @@
+.fav-btn{
+    border: none;
+    display: block;
+    margin: 15px 0 0;
+}
+.fav-btn svg {
+    color:red;
+    width: 30px;
+    height: 30px;
+}
