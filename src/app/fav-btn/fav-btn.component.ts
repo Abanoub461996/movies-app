@@ -16,7 +16,7 @@ export class FavBtnComponent implements OnInit {
   ngOnInit() {
   }
 
-  public toggleSelected() {
+  public toggleSelected(event:any) {
     this.selected = !this.selected;
     this.selectedChange.emit(this.selected);
   }

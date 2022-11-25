@@ -1,14 +1,14 @@
+import { ActivatedRoute  } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-
+import {map} from 'rxjs/operators';
 
 @Component({
-  selector: 'app-movies-list',
-  templateUrl: './movies-list.component.html',
-  styleUrls: ['./movies-list.component.css']
+  selector: 'app-movie-details',
+  templateUrl: './movie-details.component.html',
+  styleUrls: ['./movie-details.component.css']
 })
-export class MoviesListComponent implements OnInit {
+export class MovieDetailsComponent implements OnInit {
   moviesList: Array<object> = [
     {
       adult: false,
@@ -227,13 +227,14 @@ export class MoviesListComponent implements OnInit {
       vote_count: 5612,
     },
   ];
-  constructor(private router:Router) { }
+  id:string="";
+  currentMovie:any={}
+  constructor(private route:ActivatedRoute ) {}
 
   ngOnInit(): void {
-  }
-  recieveOnParent(movie:object):void{
-    console.log("from the Parent : ",movie);
-    
+     this.id = this.route.snapshot.params['id'],
+     this.moviesList = this.moviesList.filter((movie:any)=>movie.id==this.id.substring(1))
+    this.currentMovie = this.moviesList[0]
   }
 
 }

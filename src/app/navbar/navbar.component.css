@@ -2,3 +2,13 @@
     width:90%;
     margin:0 auto;
 }
+.navbar{
+    background-color:#161616 ;
+    border-bottom: #ad8174 1px solid;
+}
+.nav-link,.navbar-brand{
+    color:  #5CDB95;
+}
+.nav-link.active{
+    color:#a33327;
+}

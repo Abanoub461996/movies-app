@@ -1,4 +1,9 @@
-.card{
+.card:hover{
+    transform: scale(1.1);
+    z-index:3;
+}
+.card-spacing{
+    margin-bottom: 25px;
 }
 .release-date{
     font-weight: 500;

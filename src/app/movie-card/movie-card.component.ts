@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-movie-card',
@@ -7,13 +8,20 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MovieCardComponent implements OnInit {
   @Input() movie:any;
-  constructor() {}
+  @Output() sendMovie = new EventEmitter<object>()
+  constructor(private router:Router) {}
   ngOnInit(): void {   
     this.movie = {...this.movie,selected:false} 
   }
   addToFav(selsectedMovie:object):void{
     console.log(selsectedMovie);
-    
   }
+  sendToParent(){ // not used just to try sending data to the parent
+    this.sendMovie.emit(this.movie)  
+  }
+  handleCardClick(){
+    this.router.navigate([`movie/:${this.movie.title}/:${this.movie.id}`])
+  }
+
 
 }
