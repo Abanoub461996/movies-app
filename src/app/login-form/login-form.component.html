@@ -3,23 +3,46 @@
       <div class="col-sm-11 col-md-9 col-lg-7 col-xl-5 mx-auto">
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
-            <h5 class="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
-            <form name="loginForm" #loginForm="ngForm" (ngSubmit)="loginFormSubmit()">
-              <div class="form-floating mb-3">
+            <h5 class="card-title text-center fw-light fs-5">Sign In</h5>
+            <form name="loginForm" #loginForm="ngForm" (ngSubmit)="loginFormSubmit(loginForm.value)">
+              <div class="form-floating mb-3" >
                 <input type="email" class="form-control" id="floatingInput" placeholder="Email"
+                [ngClass]="{
+                  'border-danger': loginEmail.invalid && (loginEmail.dirty || loginEmail.touched),
+                  'border-success': loginEmail.valid && (loginEmail.dirty || loginEmail.touched)
+                }"
                 name="loginEmail" 
                 #loginEmail ="ngModel"
-                [(ngModel)]="loginForm.value.loginEmail">
+                [(ngModel)]="loginForm.value.loginEmail"
+                required minlength="6" maxlength="30" pattern="/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/" />
                 <label for="floatingInput">Email address</label>
               </div>
-               <div class="form-floating mb-3">
+              <!-- email validation  -->
+              <div *ngIf="loginEmail.touched && loginEmail.invalid" class="text-danger mb-2">
+                <p *ngIf="loginEmail.errors?.['required']">this field is required.</p>
+                <p *ngIf="loginEmail.errors?.['minlength']">it has to ne at least 6 characters.</p>
+                <p *ngIf="loginEmail.errors?.['pattern']">Enter a valid email.</p>
+              </div>
+               
+              <div class="form-floating mb-3">
                 <input type="password" class="form-control" id="floatingPassword" 
                 placeholder="Password"
+                [ngClass]="{
+                  'border-danger': loginPassword.invalid && (loginPassword.dirty || loginPassword.touched),
+                  'border-success': loginPassword.valid && (loginPassword.dirty || loginPassword.touched)
+                }"
                 name="loginPassword"
                 #loginPassword ="ngModel"
-                [(ngModel)]="loginForm.value.loginPassword">
+                [(ngModel)]="loginForm.value.loginPassword"
+                required minlength="8" maxlength="15" pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/g">
                 <label for="floatingPassword">Password</label>
               </div> 
+              <div *ngIf="loginPassword.touched && loginEmail.invalid" class="text-danger mb-2">
+                <p *ngIf="loginPassword.errors?.['required']">Enter Your Password.</p>
+                <p *ngIf="loginPassword.errors?.['minlength']">it has to ne at least 8 characters.</p>
+                <p *ngIf="loginPassword.errors?.['pattern']">Your password must contain at least one uppercase letter, one lowercase letter, one number and one special character</p>
+              </div>
+
               <div class="d-grid">
                 <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign
                   in</button>

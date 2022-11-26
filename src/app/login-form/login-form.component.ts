@@ -7,7 +7,6 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
@@ -16,8 +15,9 @@ export class LoginFormComponent implements OnInit {
     loginEmail:"",
     loginPassword:""
   };
-  loginFormSubmit(){
-
+  loginFormSubmit(values:object){
+    
+    
   }
 
 }
