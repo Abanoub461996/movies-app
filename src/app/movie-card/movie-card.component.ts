@@ -20,7 +20,7 @@ export class MovieCardComponent implements OnInit {
     this.sendMovie.emit(this.movie)  
   }
   handleCardClick(){
-    this.router.navigate([`movie/:${this.movie.title}/:${this.movie.id}`])
+    this.router.navigate([`movie/${this.movie.title}/${this.movie.id}`])
   }
 
 

@@ -13,6 +13,7 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { FavBtnComponent } from './fav-btn/fav-btn.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 // services
 
 // pipes
@@ -24,7 +25,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     MovieCardComponent,
     FavBtnComponent,
     MovieDetailsComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,

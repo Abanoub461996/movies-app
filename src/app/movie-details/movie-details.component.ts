@@ -1,7 +1,5 @@
 import { ActivatedRoute  } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie-details',
@@ -227,14 +225,15 @@ export class MovieDetailsComponent implements OnInit {
       vote_count: 5612,
     },
   ];
-  id:string="";
-  currentMovie:any={}
+  id!:any;
+  currentMovie!:any
   constructor(private route:ActivatedRoute ) {}
 
   ngOnInit(): void {
-     this.id = this.route.snapshot.params['id'],
-     this.moviesList = this.moviesList.filter((movie:any)=>movie.id==this.id.substring(1))
-    this.currentMovie = this.moviesList[0]
+    this.route.params.subscribe((param :any) => {
+      this.currentMovie = this.moviesList.filter((movie:any)=>movie.id==param.id)
+      this.currentMovie = this.currentMovie[0]
+    })
   }
 
 }
